@@ -1,0 +1,131 @@
+---
+title: "Lab 0A"
+author: "Isaac Hoskins"
+date: "8/31/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r}
+arbuthnot = read.csv("data/arbuthnot.csv") #reading in the data set
+```
+```{r}
+dim(arbuthnot) #gives the number of trials and variable amount
+names(arbuthnot) #gives the names of the variables
+```
+```{r}
+arbuthnot$boys #shows data of all trials under variable boys
+```
+```{r}
+arbuthnot$girls #shows data of all trials under variable girls
+```
+
+
+
+```{r}
+plot(x = arbuthnot$year, y = arbuthnot$girls, type = "l") #creates a graphic showing the data of the girl variable
+```
+```{r}
+?plot #gives more info on plot functions available
+```
+```{r}
+arbuthnot$boys + arbuthnot$girls #gives sum of all data points
+```
+```{r}
+```
+
+
+```{r}
+plot(arbuthnot$year, arbuthnot$boys + arbuthnot$girls, type = "l") #gives plot of total baptisms through year
+```
+```{r}
+arbuthnot$boys / arbuthnot$girls #ratio of vectors of gender
+```
+
+```{r}
+arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls) #proportion of boys baptized
+```
+```{r}
+arbuthnot$boys > arbuthnot$girls #asking if boys outnumber girls
+```
+```{r}
+present= read.csv("data/present.csv") #inserted data set wanted
+```
+```{r}
+present #shows data set present
+```
+```{r}
+dim(present) #shows data set of present
+```
+```{r}
+names(present) #shows names of variables of present data set
+```
+
+```{r}
+present$boys #shows births of boys over the years in the US
+```
+```{r}
+present$girls #shows births of girls over the years in the US
+```
+```{r}
+plot(x = present$year, y = present$girls, type = "l") # created a graph showing girls births over time with a line connecting points ("l")
+```
+```{r}
+present$girls + present$boys #finding all births
+```
+```{r}
+plot(present$year, present$girls + present$boys, type = "l") #plotting all us births over time
+```
+```{r}
+present$boys / present$girls #finding ratio of boys vs girl births
+ratio = present$boys / present$girls #defines the ratio of boys and girls at birth so it can be more easily used later on
+```
+```{r}
+present$boys / (present$girls + present$boys) #finding proportion of gender of babies born
+```
+```{r}
+present$boys > present$girls #finds if more boys than girls are born each year
+```
+Answers to questions
+
+1.What years are included in this data set? What are the dimensions of the data frame and what are the variable or column names?
+the years 1940-2002 are included in this data sets. The dimensions of the data frame are [1] 63  3 and the variable names are boys, girls, and year. 
+
+2. How do these counts compare to Arbuthnot’s? Are they on a similar scale?
+These counts while not similar in terms of number count are very similar in terms of proportion and ratio of sex at birth. The scale of arbuthnots counts are in the thousands, while the present counts differ as they are in the magnitude of millions. 
+
+3.Make a plot that displays the boy-to-girl ratio for every year in the data set. What do you see? Does Arbuthnot’s observation about boys being born in greater proportion than girls hold up in the U.S.? Include the plot in your response.
+```{r}
+plot(present$year, ratio, type = "l") #plots the ratio of gender at birth
+```
+
+Within the above plot, I see that the ratio, while having a slight declining trend over time, is always above 1, which means that boys in the years are always being born in greater proportion than girls, much like arbuthnot's observations centuries ago. 
+
+
+4. In what year did we see the most total number of births in the U.S.? You can refer to the help files or the R reference card http://cran.r-project.org/doc/contrib/Short-refcard.pdf to find helpful commands.
+```{r}
+max(present$boys + present$girls) #finds the max value of the total number of births in the U.S.
+```
+4,268,326 total births is the most births seen in the U.S. from the years 1940-2002.
+
+Overall the experiment went well. I struggled gaining some coding experience. I look forward to improving this though! I only hit a couple of errors that I was able to get through.
+
